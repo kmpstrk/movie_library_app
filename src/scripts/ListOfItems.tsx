@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import {Movie} from '../interfaces/Movie'
 import ListProps from '../interfaces/ListProps'
+import '../styles/ListOfItems.css'
+import ListItem from './ListItem'
 
 const ListOfItems: React.FC<ListProps> = ({name})=>{
 
@@ -36,20 +38,23 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
+    console.log(movies);
+
     return (
-      <div className= {name + '_hp_container'}>
-        <h1> THIS IS {name}s</h1>
+      <div className= 'hp_container'>
+        <h1> Popular {name}s</h1>
            {movies.length > 0 ? (
-        <ul>
+        <div className= {name + '_hp_container'}>
           {movies.map((movie) => (
-            <li key={movie.id}>
-              <h1>{movie.title}</h1>
-              <p><strong>Year:</strong> {movie.release_date}</p>
-              <p><strong>Rating:</strong> {movie.vote_average}</p>
-              <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
-            </li>
+              <ListItem 
+              id = {movie.id} 
+              title = {movie.title} 
+              release_date = {movie.release_date} 
+              vote_average={movie.vote_average} 
+              poster_path={movie.poster_path} />
+        
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No data available</p>
       )}
