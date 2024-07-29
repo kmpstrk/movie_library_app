@@ -1,0 +1,41 @@
+.formContainer{
+    grid-column: 2/2;
+    justify-self: end;
+    margin: auto 2em;
+    width: 50%;
+}
+
+.formContainer form{
+    grid-template-columns: 10fr 1fr;
+    display: grid;
+    height: 2em;   
+    background-color: rgb(228, 228, 228, 0.367);
+    border-radius: 100em;
+    padding: 0.3em;
+}
+
+input{
+    background-color: rgba(228, 228, 228, 0.367);
+    border: 0;
+    margin-right: 0.5em;
+    border-radius: 100em;
+    font-size: 1em;
+    padding: 0 1em;
+
+}
+
+
+.formContainer button{
+    background-color: rgb(255, 255, 255);
+    grid-column: 2/2;
+    border-radius: 100em;
+    border: 0;
+    transition: color 0.3s ease;
+}
+
+.magnifyingGlassIcon{
+    width: 1.2em;
+    height: 1.2em;
+    color: blue;
+    transition: color 0.3s ease;
+}
