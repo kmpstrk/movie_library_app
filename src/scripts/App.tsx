@@ -10,7 +10,7 @@ const App: React.FC = () => {
     <div>
       <Header />
       <div className='bodyContainer'>
-      <ListOfItems name = 'movie'/>
+      <ListOfItems name = 'conflict'/>
       <ListOfItems name = 'tv'/>
       </div>
     </div>
