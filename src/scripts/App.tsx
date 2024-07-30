@@ -9,8 +9,10 @@ const App: React.FC = () => {
   return (
     <div>
       <Header />
+      <div className='bodyContainer'>
       <ListOfItems name = 'movie'/>
       <ListOfItems name = 'tv'/>
+      </div>
     </div>
   );
 }
