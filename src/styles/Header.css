@@ -1,17 +1,3 @@
-.headerContainer{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    width: 100%;
-    height: 4em;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #fafafa2d;
-    backdrop-filter: blur(10px);
-    z-index: 1;
-}
-
 .logoContainer{
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
