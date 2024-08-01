@@ -1,9 +1,11 @@
-import axiosInstance from "./AxiosConfig"
+import axiosInstance from "../AxiosConfig"
 import {useEffect, useState } from 'react'
-import {Movie} from '../interfaces/Movie'
-import '../styles/Banner.css'
-import { ItemProps } from "../interfaces/ItemProps"
-import { BannerProps } from "../interfaces/bannerProps"
+import {Movie} from '../../interfaces/Movie'
+import '../../styles/Banner.css'
+import { BannerProps } from "../../interfaces/bannerProps"
+import ListItem from "./ListItem"
+
+const SESSION_STORAGE_MOVIES_KEY = 'cached';
 
 const Banner : React.FC<BannerProps> = ({type, name})=>{
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -11,13 +13,18 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
     //const [loading, setLoading] = useState<boolean>(false);
     //const [error, setError] = useState<string | null>(null);
 
-
     useEffect(()=>{
         const fetchData = async () => {
             try {
-              const response = await axiosInstance.get<{ results: Movie[] }>('/movie/'+type);
-              setMovies(response.data.results);
-              //setLoading(false);
+                const storedMovies = sessionStorage.getItem(SESSION_STORAGE_MOVIES_KEY+type)
+
+                if(storedMovies){
+                    setMovies(JSON.parse(storedMovies));
+                } else {
+                    const response = await axiosInstance.get<{ results: Movie[] }>('/movie/'+type);
+                    setMovies(response.data.results);
+                    sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+type, JSON.stringify(response.data.results))
+                }
             } catch (err) {
               //setError('Failed to fetch data');
               //setLoading(false);
@@ -27,13 +34,15 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
           fetchData();
     }, []);
 
+
     useEffect(()=>{
         if(movies.length > 0){
-            setMovie(movies[0]);
+            const randomIndex = Math.floor(Math.random() * movies.length);
+            setMovie(movies[randomIndex]);
         } else{
-            //setError('No data');
+            <p>No movies data</p>
         }
-    }, [movies, movie]);
+    }, [movies]);
 
 
     /*
@@ -47,9 +56,7 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
            {movie ? (
                 <>
                 <h1>{name}</h1>
-                <h2>{movie.title}</h2>
-                <p><strong>Year:</strong> {movie.release_date}</p>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
+               <ListItem movie={movie} />
                 </>
             ) : ( 
                 <p>No movie data available</p>

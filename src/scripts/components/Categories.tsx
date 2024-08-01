@@ -1,7 +1,7 @@
 import CategoryButton from "./CategoryButton";
 import { useEffect, useState } from "react";
-import { Genre } from "../interfaces/Genre";
-import axiosInstance from "./AxiosConfig";
+import { Genre } from "../../interfaces/Genre";
+import axiosInstance from "../AxiosConfig";
 
 const SESSION_STORAGE_GENRES_KEY = 'cachedGenres';
 
@@ -37,7 +37,7 @@ const Categories : React.FC = ()=>{
         <>
         {genres.length > 0 ? (
             genres.map((genre)=>(
-                <CategoryButton key={genre.id} category={genre.id} name={genre.name}/>
+                <CategoryButton key={genre.id} id={genre.id} name={genre.name}/>
             ))
         ) : (
             <p>No data</p>
