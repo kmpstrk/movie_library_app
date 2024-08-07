@@ -1,7 +1,33 @@
 .categoryBtn{
-    border-radius: 10em;
-    background-color: beige;
-    color: black;
-    height: 100%;
-    width: 100%;
+    margin: 0 0.5em;
 }
+
+
+  
+.categoryBtn a {
+    display: block;
+    padding: 1.5em 2em;
+    text-align: center;
+    color: #333;
+    text-decoration: none; 
+    background-color: #f9f9f9;
+    border: 2px solid #e0e0e0; 
+    border-radius: 1em; 
+    transition: all 0.3s ease; 
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+  
+.categoryBtn a:hover {
+    background-color: #fff; /* Более светлый фон при наведении */
+    border-color: #d4d4d4; /* Изменение цвета границы при наведении */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Увеличенная тень при наведении */
+    color: #000; /* Увеличение контраста текста при наведении */
+}
+
+.categoryBtn a:active {
+    background-color: #f1f1f1; /* Легкое затемнение при нажатии */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* Меньшая тень при нажатии */
+    transform: translateY(2px); /* Легкий сдвиг вниз при нажатии */
+}
+  

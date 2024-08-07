@@ -3,7 +3,7 @@ import {useEffect, useState } from 'react'
 import {Movie} from '../../interfaces/Movie'
 import '../../styles/Banner.css'
 import { BannerProps } from "../../interfaces/bannerProps"
-import ListItem from "./ListItem"
+import Rating from "./Rating"
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached';
 
@@ -52,11 +52,25 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
 
     return (
-        <div className="banner">
+        <div className="bannerContainer">
            {movie ? (
                 <>
                 <h1>{name}</h1>
-               <ListItem movie={movie} />
+                <div className = 'banner'>
+
+                    <div className='bannerTextContainer'>
+                        <h2>{movie.title}</h2>
+                        <p><strong>Year:</strong> {movie.release_date}</p>
+                        <Rating rating = {movie.vote_average} />
+                        <div className="bannerOverviewContainer">
+                            <p>{movie.overview}</p>
+                        </div>
+                    </div>
+                    <div className='imageContainer'>
+                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
+                    </div>
+                
+                </div>
                 </>
             ) : ( 
                 <p>No movie data available</p>

@@ -5,7 +5,7 @@ import ListProps from '../../interfaces/ListProps'
 import '../../styles/ListOfItems.css'
 import ListItem from './ListItem'
 
-const SESSION_STORAGE_MOVIES_KEY = 'cached';
+const SESSION_STORAGE_MOVIES_KEY = 'cached_';
 
 
 const ListOfItems: React.FC<ListProps> = ({name})=>{
@@ -42,7 +42,8 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
             {movies.map((movie) => (
              <ListItem 
                   key={movie.id}
-                  movie = {movie} />
+                  movie = {movie}
+                  from = {name} />
               ))
             }
           </div>

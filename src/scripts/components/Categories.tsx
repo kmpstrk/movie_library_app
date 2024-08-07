@@ -1,15 +1,16 @@
-import CategoryButton from "./CategoryButton";
+//import CategoryButton from "./CategoryButton";
 import { useEffect, useState } from "react";
 import { Genre } from "../../interfaces/Genre";
 import axiosInstance from "../AxiosConfig";
+import Error from "./Error";
+import Carousel from "./Carousel";
 
-const SESSION_STORAGE_GENRES_KEY = 'cachedGenres';
+const SESSION_STORAGE_GENRES_KEY = 'cached_genres';
 
 
 const Categories : React.FC = ()=>{
 
     const [genres, setGenres] = useState<Genre[]>([])
-    const [err, setErr] = useState<string | null>(null)
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -23,24 +24,19 @@ const Categories : React.FC = ()=>{
                     sessionStorage.setItem(SESSION_STORAGE_GENRES_KEY, JSON.stringify(response.data.genres))
                 }
             } catch (error) {
-                setErr("Error fetching genres");
+                console.error(error);
             }
           };
           fetchData();
     },[])
 
-    if (err) {
-        return <p>{err}</p>;
-    }
-
+    
     return(
         <>
         {genres.length > 0 ? (
-            genres.map((genre)=>(
-                <CategoryButton key={genre.id} id={genre.id} name={genre.name}/>
-            ))
+           <Carousel genres={genres}/>
         ) : (
-            <p>No data</p>
+            <Error text='No categories' />
         )}
         </>
     )

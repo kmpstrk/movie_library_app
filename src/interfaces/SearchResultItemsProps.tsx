@@ -1,5 +1,6 @@
 import { Movie } from "./Movie"
 
 export interface SearchResultItemsProps{
-    result : Movie[]
+    result : Movie[];
+    from : string;
 }

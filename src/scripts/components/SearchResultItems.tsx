@@ -2,7 +2,7 @@ import { SearchResultItemsProps } from "../../interfaces/SearchResultItemsProps"
 import ListItem from "./ListItem";
 
 
-const SearchResultItems : React.FC<SearchResultItemsProps> = ({result})=>{
+const SearchResultItems : React.FC<SearchResultItemsProps> = ({result, from})=>{
 
     return(
         <>
@@ -10,7 +10,8 @@ const SearchResultItems : React.FC<SearchResultItemsProps> = ({result})=>{
              result.map((movie)=>(
                 <ListItem 
                   key={movie.id}
-                  movie = {movie} />
+                  movie = {movie} 
+                  from= {from}/>
             ))
         ) : (
             <div className="noDataBlock">
