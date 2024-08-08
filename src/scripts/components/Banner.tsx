@@ -4,8 +4,10 @@ import {Movie} from '../../interfaces/Movie'
 import '../../styles/Banner.css'
 import { BannerProps } from "../../interfaces/bannerProps"
 import Rating from "./Rating"
+import Error from "./Error"
+import { Link } from "react-router-dom"
 
-const SESSION_STORAGE_MOVIES_KEY = 'cached';
+const SESSION_STORAGE_MOVIES_KEY = 'cached_';
 
 const Banner : React.FC<BannerProps> = ({type, name})=>{
     const [movies, setMovies] = useState<Movie[]>([]);
@@ -26,6 +28,7 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                     sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+type, JSON.stringify(response.data.results))
                 }
             } catch (err) {
+                console.error(err);
               //setError('Failed to fetch data');
               //setLoading(false);
             }
@@ -40,7 +43,7 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
             const randomIndex = Math.floor(Math.random() * movies.length);
             setMovie(movies[randomIndex]);
         } else{
-            <p>No movies data</p>
+            console.error('No movies data')
         }
     }, [movies]);
 
@@ -56,6 +59,8 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
            {movie ? (
                 <>
                 <h1>{name}</h1>
+                
+                <Link to={`${type}/detail/${movie.id}`}>
                 <div className = 'banner'>
 
                     <div className='bannerTextContainer'>
@@ -71,9 +76,10 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                     </div>
                 
                 </div>
+                </ Link>
                 </>
             ) : ( 
-                <p>No movie data available</p>
+                <Error text='No data'/>
             )}
                 
         </div>
