@@ -6,11 +6,11 @@
     color: #333; /* Темный цвет текста */
     text-decoration: none; /* Убираем подчеркивание */
     background-color: #f9f9f9; /* Светлый фон */
-    border: 2px solid #e0e0e0; /* Светло-серая граница */
+    border: 2px solid #e0e0e0; 
     border-radius: 1em; /* Соответствует границам родителя */
     transition: all 0.3s ease; /* Плавные переходы при наведении */
     font-weight: 700;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     text-wrap: pretty;
 }
 

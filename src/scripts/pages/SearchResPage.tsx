@@ -47,7 +47,7 @@ const SearchResPage : React.FC = ()=>{
             {searchResult.length > 0 ? (
                 <SearchResultItems result={searchResult} from = 'search_result'/>
             ) : (
-                <Error text = 'Sorry, something is wrong. Try to check your Internet connection.'/>
+                <Error text = 'Nothing is found'/>
             )}
         </div>
     )
