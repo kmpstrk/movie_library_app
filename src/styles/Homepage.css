@@ -1,0 +1,52 @@
+.homepageContainer{
+  display:grid;
+  grid-template-rows: 4em 30em 6em 1fr;
+  gap: 2em;
+}
+
+
+.headerContainer{
+  grid-row: 1/2;
+
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 4em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--main-bg-color);
+  border-bottom: 1px solid var(--black);
+  z-index: 100;
+}
+
+.bannersContainer{
+  grid-row: 2/3;
+
+  display:grid;
+  grid-template-columns: 1fr 2.5fr;
+  justify-items: center;
+  margin: 1em;
+  gap:2em;
+}
+
+.categoriesContainer{
+  grid-row: 3/4;
+  width: 100vw;
+  /*
+  display: flex;
+  white-space: nowrap;
+  box-sizing: border-box;
+  overflow-x: scroll;*/
+}
+
+
+.listsContainer{
+  grid-row: 4/5;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 4em;
+}

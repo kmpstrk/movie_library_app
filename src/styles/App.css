@@ -1,7 +1,0 @@
-.bodyContainer{
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 4em;
-  margin-top: 3em;
-}
