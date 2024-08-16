@@ -5,13 +5,7 @@
     width: 35%;
 }
 
-@media (max-width: 768px){
-    .formContainer{
-        width: 50%;
-        margin: auto 0.5em;
-        font-size: 0.9em;
-    }
-}
+
 
 .formContainer form {
     display: flex;
@@ -61,4 +55,13 @@ input {
     height: 1.2em;
     color: var(--black);
     transition: color 0.3s ease;
+}
+
+
+@media (max-width: 768px){
+    .formContainer{
+        width: 50%;
+        margin: auto 0.5em;
+        font-size: 0.9em;
+    }
 }

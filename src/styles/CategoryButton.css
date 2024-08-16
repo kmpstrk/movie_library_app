@@ -23,6 +23,51 @@
     
 }
 
+
+.categoryBtn a:hover {
+    background-color: #fff;
+    border-color: #d4d4d4; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    color: #000;
+}
+
+.categoryBtn a:active {
+    background-color: #f1f1f1;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
+}
+  
+
+
+.infoSummary .categoryBtn{
+    font-size: 0.85em;
+    display: flex;
+    justify-content: center; 
+    align-items: center;  
+}
+
+.infoSummary .categoryBtn a {
+    width: 100%;
+    padding: 0.4em 0.6em;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 16px; 
+    transition: all 0.3s ease; 
+    font-weight: 100;
+    border: 1px solid #525252;
+    white-space: nowrap;    
+}
+
+.infoSummary .categoryBtn a:hover{
+    background-color: #4f4f4f;
+    border-color: #525252; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+
 @media (max-width: 768px) {
 
     .categoryBtn a {
@@ -33,20 +78,3 @@
         font-size: 0.9em;
     }
 }
-
-
-
-
-.categoryBtn a:hover {
-    background-color: #fff; /* Более светлый фон при наведении */
-    border-color: #d4d4d4; /* Изменение цвета границы при наведении */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Увеличенная тень при наведении */
-    color: #000; /* Увеличение контраста текста при наведении */
-}
-
-.categoryBtn a:active {
-    background-color: #f1f1f1; /* Легкое затемнение при нажатии */
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* Меньшая тень при нажатии */
-    transform: translateY(2px); /* Легкий сдвиг вниз при нажатии */
-}
-  

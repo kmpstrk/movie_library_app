@@ -9,12 +9,14 @@ import BackButton from '../components/BackButton';
 import '../../styles/SearchResultPage.css';
 import MainTitle from '../components/MainTitle';
 import Error from '../components/Error';
+import Loading from '../components/Loading';
 
 const SESSION_STORAGE_KEY = 'cached_category';
 
 const CategoryPage: React.FC = ()=>{
     const [categoryMovies, setCategoryMovies] = useState<Movie[]>([]);
     const { name, id} = useParams<{ name: string; id: string }>();
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect( ()=>{
         const fetchData = async()=>{
@@ -23,11 +25,13 @@ const CategoryPage: React.FC = ()=>{
                     {
                         params:{
                             with_genres: id,
+                            sort_by: 'popularity.desc',
                         }
                     }
                 );
                 setCategoryMovies(response.data.results);
-                sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(response.data.results))
+                sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(response.data.results));
+                setLoading(false);
             }catch(err){
                 console.error(err);
             }
@@ -36,20 +40,35 @@ const CategoryPage: React.FC = ()=>{
     })
 
     return(
-        <div>
+        
+        <div className='categoryPageContainer'>
             
             < Header />
-
-            <div className='pageTitle'>
-                <BackButton />
-                <h1> <MainTitle title = {name} /> </h1> 
-            </div>
             
-            { categoryMovies.length > 0 ? (
-                <SearchResultItems result={categoryMovies} from = 'category'/>
+            {loading ? (
+                <Loading />
             ) : (
-                <Error text = 'Sorry, something is wrong. Try to check your Internet connection.'/>
-            ) }
+                
+
+                <div className='categoryPageContent'>
+            
+                <div className='pageTitle'>
+                    <BackButton />
+                    <h1> <MainTitle title = {name} /> </h1> 
+                </div>
+                
+                <div className='searchResultContainer'>
+                    { categoryMovies.length > 0 ? (
+                        <SearchResultItems result={categoryMovies} from = 'category'/>
+                    ) : (
+                        <Error text = 'No data found'/>
+                    ) }
+                </div>
+                
+            </div>
+            )}
+
+            
         </div>
     )
 }

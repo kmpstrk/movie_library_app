@@ -1,0 +1,131 @@
+.detailPageContainer{
+    display:grid;
+    grid-template-rows: 4em 1fr;
+    padding: 0 1em;
+    overflow: hidden;
+    background-color: #0f0f0f;
+    color: rgb(239, 239, 239);
+}
+
+
+
+.detailPageContent{
+    grid-row: 2/3;
+
+    display:flex;
+    flex-direction: row;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.informationContainer .pageTitle{
+  display: flex;
+  flex-direction: row;
+ 
+  align-items: center;
+}
+
+.informationContainer{
+  display: flex;
+  flex-direction: column;
+  max-width: 50em;
+  min-width: 30em;
+  position: relative;
+  z-index: 2;
+  padding: 2em 0;
+}
+
+
+.informationContainer:after {
+  background: linear-gradient(
+    90deg, 
+    #0f0f0f 8%,
+    hsla(0, 0%, 8%, 0.97) 25%, 
+    hsla(0, 0%, 8%, 0.95) 35%,
+    hsla(0, 0%, 8%, .94) 40%, 
+    hsla(0, 0%, 8%, .92) 45%, 
+    hsla(0, 0%, 8%, .9) 50%, 
+    hsla(0, 0%, 8%, .87) 55%,
+    hsla(0, 0%, 8%, .82) 60%,
+    hsla(0, 0%, 8%, .75) 65%,
+    hsla(0, 0%, 8%, .63) 70%,
+    hsla(0, 0%, 8%, .45) 75%,
+    hsla(0, 0%, 8%, .27) 80%,
+    hsla(0, 0%, 8%, .15) 85%, 
+    hsla(0, 0%, 8%, .08) 90%, 
+    hsla(0, 0%, 8%, .03) 95%,
+    hsla(0, 0%, 8%, 0)
+  );
+  
+  bottom: 0;
+  content: "";
+  left: 0;
+  top: 0;
+  position: absolute;
+  right: -20em;
+  z-index: -1;
+}
+
+
+.detailPageImageContainer{
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  height: 0;
+  padding-bottom: 55%;
+  z-index: 1;
+}
+
+.detailPageImageContainer img{
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  right: -10%;
+  width: 100%;
+
+}
+
+.detailPageContent .infoSummary{
+  margin-left: 2em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.detailPageContent .detailPageOverview{
+  margin-left: 2em;
+}
+
+
+@media (max-width: 1024px) {
+  .informationContainer {
+      max-width: 40em;
+      min-width: 25em; 
+  }
+}
+
+
+@media (max-width: 480px){
+
+  .detailPageContent{
+    flex-direction: column;
+  }
+
+  .informationContainer {
+    max-width: 90%; 
+    min-width: auto; 
+    padding: 1em 0; 
+}
+.detailPageOverview{
+  width: 100%;
+}
+
+.detailPageImageContainer {
+    padding-bottom: 75%; 
+}
+
+}

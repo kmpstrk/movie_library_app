@@ -4,6 +4,7 @@ import {Movie} from '../../interfaces/Movie'
 import '../../styles/Banner.css'
 import { BannerProps } from "../../interfaces/bannerProps"
 import Rating from "./Rating"
+import ReleaseDate from './ReleaseDate'
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached';
 
@@ -52,7 +53,7 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
 
     return (
-        <div className="bannerContainer">
+        <div className = {`bannerContainer ${type}`}>
            {movie ? (
                 <>
                 <h1>{name}</h1>
@@ -60,14 +61,19 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
                     <div className='bannerTextContainer'>
                         <h2>{movie.title}</h2>
-                        <p><strong>Year:</strong> {movie.release_date}</p>
-                        <Rating rating = {movie.vote_average} />
+
+                        <div className="dateAndRating">
+                            <ReleaseDate date = {movie.release_date} />
+                            <Rating rating = {movie.vote_average} />
+                        </div>
+                        
                         <div className="bannerOverviewContainer">
                             <p>{movie.overview}</p>
                         </div>
                     </div>
+
                     <div className='imageContainer'>
-                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
+                        <img src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
                     </div>
                 
                 </div>

@@ -1,15 +1,17 @@
 .backButton{
     width: 2em;
     height: 2em;
-    margin: auto;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(246, 246, 246);
     transition: background-color 0.3s;
-    font-size: 1em;
+    font-size: 1.2em;
+    color: rgb(114, 114, 114);
+    margin-right: 1em;
 }
 
 .backButton:hover{
-    background-color: rgb(208, 208, 208);
+    background-color: rgb(255, 255, 255);
+    color:rgb(27, 27, 27)
 }

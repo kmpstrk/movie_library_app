@@ -8,6 +8,7 @@ import '../../styles/variables.css';
 import BackButton from "../components/BackButton";
 import '../../styles/SearchResultPage.css';
 import Error from "../components/Error";
+import MainTitle from "../components/MainTitle";
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached_search_result';
 
@@ -26,6 +27,7 @@ const SearchResPage : React.FC = ()=>{
                         {
                             params: {
                                 query : searchQuery,
+                                sort_by: 'popularity.desc',
                             }
                         }
                     )
@@ -41,14 +43,27 @@ const SearchResPage : React.FC = ()=>{
 
 
     return (
-        <div>
+        <div className="searchResPageContainer">
+
             <Header />
-            <BackButton />
-            {searchResult.length > 0 ? (
-                <SearchResultItems result={searchResult} from = 'search_result'/>
-            ) : (
-                <Error text = 'Nothing is found'/>
-            )}
+
+            <div className="searchResPageContent">
+
+                <div className='pageTitle'>
+                    <BackButton />
+                    <h1> <MainTitle title = {searchQuery} /> </h1> 
+                </div>
+
+                <div className="searchResultContainer">
+                    {searchResult.length > 0 ? (
+                        <SearchResultItems result={searchResult} from = 'search_result'/>
+                    ) : (
+                        <Error text = 'Nothing is found'/>
+                    )}
+                </div>
+
+            </div>
+            
         </div>
     )
 
