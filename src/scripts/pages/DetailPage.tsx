@@ -65,19 +65,23 @@ const DetailPage : React.FC = ()=>{
                         
                         
                         <div className="infoSummary">
-                            <Rating rating = {movie.vote_average} />
-                            <Divider/>
-                            <ReleaseDate date = {movie.release_date} />
-                            <Divider />
-                            {
-                                genres.length > 0 ? (
-                                    genres.map((genre)=>(
-                                        <CategoryButton key={genre.id} id = {genre.id} name = {genre.name} />
-                                    ))
-                                ) : (
-                                    <></>
-                                )
-                            }
+                            <div className="infoRatingYear">
+                                <Rating rating = {movie.vote_average} />
+                                <Divider/>
+                                <ReleaseDate date = {movie.release_date} />
+                                <Divider />
+                            </div>
+                            <div className="movieDetailGenres">
+                                {
+                                    genres.length > 0 ? (
+                                        genres.map((genre)=>(
+                                            <CategoryButton key={genre.id} id = {genre.id} name = {genre.name} />
+                                        ))
+                                    ) : (
+                                        <></>
+                                    )
+                                }
+                            </div>
                         </div>
                         <p className="detailPageOverview">{movie.overview}</p>
                     </div>
