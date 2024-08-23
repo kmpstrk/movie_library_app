@@ -31,13 +31,13 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                 }
                 setLoading(false);
             } catch (err) {
-              console.error(err);
+              console.log(err);
 
             }
           };
       
           fetchData();
-    }, []);
+    }, [type]);
 
 
     useEffect(()=>{
@@ -45,15 +45,9 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
             const randomIndex = Math.floor(Math.random() * movies.length);
             setMovie(movies[randomIndex]);
         } else{
-            console.error('No movies data')
+            console.log('No movies data')
         }
     }, [movies]);
-
-
-    /*
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
-    */
 
 
     return (
@@ -92,11 +86,12 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
             ) : ( 
 
                 <Error text='No data'/>
+            )
             )}
 
-                
-        </div>
-    )
+            </div>
+        )
+
 }
 
 export default Banner

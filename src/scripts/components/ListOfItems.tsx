@@ -4,6 +4,7 @@ import {Movie} from '../../interfaces/Movie'
 import ListProps from '../../interfaces/ListProps'
 import '../../styles/ListOfItems.css'
 import ListItem from './ListItem'
+import Error from './Error'
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached_';
 
@@ -11,7 +12,6 @@ const SESSION_STORAGE_MOVIES_KEY = 'cached_';
 const ListOfItems: React.FC<ListProps> = ({name})=>{
 
     const [movies, setMovies] = useState<Movie[]>([]);
-    //const [error, setError] = useState<string | null>(null);
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -29,7 +29,7 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
                 sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+name, JSON.stringify(response.data.results));
               }
             } catch (err) {
-              <p>Failed to fetch data</p>
+              <Error text = 'Failed to fetch data' />
             }
           };
       
@@ -51,9 +51,9 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
             }
           </div>
       ) : (
-        <p>No data available</p>
+        <Error text = 'No data' />
       )}
-        </div>
+      </div>
       );
 }
 
