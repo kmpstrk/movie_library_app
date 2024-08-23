@@ -13,6 +13,8 @@ import Loading from '../components/Loading';
 
 const SESSION_STORAGE_KEY = 'cached_category';
 
+
+
 const CategoryPage: React.FC = ()=>{
     const [categoryMovies, setCategoryMovies] = useState<Movie[]>([]);
     const { name, id} = useParams<{ name: string; id: string }>();

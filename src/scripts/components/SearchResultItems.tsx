@@ -1,4 +1,5 @@
 import { SearchResultItemsProps } from "../../interfaces/SearchResultItemsProps";
+import Error from "./Error";
 import ListItem from "./ListItem";
 
 
@@ -14,9 +15,7 @@ const SearchResultItems : React.FC<SearchResultItemsProps> = ({result, from})=>{
                   from= {from}/>
             ))
         ) : (
-            <div className="noDataBlock">
-                <p>Sorry, nothing is found</p>
-            </div>
+            <Error text='Nothing is found' />
         )}
         </>
     )

@@ -4,7 +4,6 @@
     width: 98vw;
     display:flex;
     flex-direction: row; 
-    align-items: center;
   }
 
 
@@ -21,7 +20,11 @@ h2{
 }
 
 .top_rated{
-    width: 65%;
+    width: 65;
+}
+
+.top_rated .banner{
+    height: 25em;
 }
 
 .banner{
@@ -143,7 +146,7 @@ h2{
     grid-row: 1 / 3;
     grid-column: 1 / -1;
     color: var(--black);
-    width: 100%;
+    width: auto;
 }
 
 .upcoming .banner .bannerOverviewContainer{
@@ -155,17 +158,19 @@ h2{
     display: grid; 
     grid-template-columns: 100%;
     grid-template-rows: 50% 50%;
+    
+    height: 25em;
 }
 
 
 .upcoming .banner .imageContainer{
     grid-column: 1 / 1;
-    grid-row: 2 / 2;
+    grid-row: 1 / 3;
 }
 
 
 .upcoming .banner .imageContainer img{
-    width: 100%;
+    height: 40em;
 }
 
 
@@ -189,7 +194,6 @@ h2{
     .banner .imageContainer {
         position: absolute;
         width: 100%;
-        /*right: 20%;*/
     }
 
     .upcoming .banner .bannerTextContainer{
@@ -218,12 +222,10 @@ h2{
         width: 100%
     }
 
-    .top_rated .banner::before {
-        /*left: 25%;*/
-    }
 
     .top_rated .banner{
         width: 100%;
+        height: auto;   
     }
 
     .banner .bannerTextContainer{
@@ -296,9 +298,14 @@ h2{
         display: flex; 
         align-items: center; 
         position: relative; 
-        height: 100%;
+        height: auto;   
         overflow: hidden; 
     }
+
+    .upcoming .banner .imageContainer img{
+        width: 100%;
+        height: auto;
+     }
 }
 
 @media (max-width:480px) {

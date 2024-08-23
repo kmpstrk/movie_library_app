@@ -29,9 +29,7 @@
     transform: translateY(2px); 
 }
 
-.listItemContainer .imageContainer{
-    max-height: 20em;
-}
+
 
 .listItemContainer img{
     object-fit:fill;
@@ -53,18 +51,3 @@
     margin: auto;
 }
 
-
-@media (min-width: 1024px){
-
-
-    
-.searchResultContainer .listItemContainer img{
-    filter: saturate(5%);
-    transition: filter 0.3s ease;
-}
-
-.searchResultContainer .listItemContainer:hover img{
-    filter:saturate(100%);
-}
-
-}

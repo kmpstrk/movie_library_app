@@ -10,12 +10,14 @@ import ReleaseDate from "../components/ReleaseDate";
 import Divider from "../components/Divider";
 import { Genre } from "../../interfaces/Genre";
 import CategoryButton from "../components/CategoryButton";
+import Loading from "../components/Loading";
 
 
 const DetailPage : React.FC = ()=>{
     const { movieId, from } = useParams<{movieId: string; from:string}>();
     const [movie, setMovie] = useState<Movie | null>(null);
     const [genres, setGenres] = useState <Genre[]> ([]);
+    const [loading, setLoading] = useState<boolean> (true);
     
     useEffect(()=> {
         if(movieId && from){
@@ -27,8 +29,9 @@ const DetailPage : React.FC = ()=>{
                     const m = movies.find((m:Movie) => m.id === movieIdNum);
                     setMovie(m);
                     setGenres(findGenres(m));
+                    setLoading(false);
                 } catch (err) {
-                    console.error(err);
+                    console.log(err);
                 }
             }
         }
@@ -53,47 +56,53 @@ const DetailPage : React.FC = ()=>{
 
             <Header />
 
-            { movie ? (
-                <div className="detailPageContent">
-
-                    <div className="informationContainer">
-
-                        <div className="pageTitle">
-                            <BackButton />
-                            <h1> {movie.title}</h1>
-                        </div>
-                        
-                        
-                        <div className="infoSummary">
-                            <div className="infoRatingYear">
-                                <Rating rating = {movie.vote_average} />
-                                <Divider/>
-                                <ReleaseDate date = {movie.release_date} />
-                                <Divider />
-                            </div>
-                            <div className="movieDetailGenres">
-                                {
-                                    genres.length > 0 ? (
-                                        genres.map((genre)=>(
-                                            <CategoryButton key={genre.id} id = {genre.id} name = {genre.name} />
-                                        ))
-                                    ) : (
-                                        <></>
-                                    )
-                                }
-                            </div>
-                        </div>
-                        <p className="detailPageOverview">{movie.overview}</p>
-                    </div>
-
-                    <div className="detailPageImageContainer">
-                        <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt='Poster'></img>
-                    </div>
-        
-                </div> 
+            {loading ? (
+                <Loading />
             ) : (
-                <Error text = 'Sorry, nothing is found.'/>
-            )}
+
+                movie ? (
+                    <div className="detailPageContent">
+
+                        <div className="informationContainer">
+
+                            <div className="pageTitle">
+                                <BackButton />
+                                <h1> {movie.title}</h1>
+                            </div>
+                            
+                            
+                            <div className="infoSummary">
+                                <div className="infoRatingYear">
+                                    <Rating rating = {movie.vote_average} />
+                                    <Divider/>
+                                    <ReleaseDate date = {movie.release_date} />
+                                    <Divider />
+                                </div>
+                                <div className="movieDetailGenres">
+                                    {
+                                        genres.length > 0 ? (
+                                            genres.map((genre)=>(
+                                                <CategoryButton key={genre.id} id = {genre.id} name = {genre.name} />
+                                            ))
+                                        ) : (
+                                            <></>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                            <p className="detailPageOverview">{movie.overview}</p>
+                        </div>
+
+                        <div className="detailPageImageContainer">
+                            <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt='Poster'></img>
+                        </div>
+            
+                    </div> 
+                ) : (
+                    <Error text = 'Sorry, nothing is found.'/>
+                )
+            )
+        }
            
             
         </div>
