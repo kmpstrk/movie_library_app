@@ -1,33 +1,41 @@
+.bannersContainer{
+    grid-row: 2/3;
+  
+    width: 98vw;
+    display:flex;
+    flex-direction: row; 
+    align-items: center;
+  }
+
+
 .bannerContainer{
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
-    overflow: hidden;
+    width: 90%;
+    margin: 0 1em;   
 }
 
+h2{
+    margin-bottom:0;
+}
+
+.top_rated{
+    width: 65%;
+}
 
 .banner{
     display: flex; 
     align-items: center; 
     position: relative; 
-    max-width: 100%;
     height: 100%;
     overflow: hidden; 
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-
-
-    /*
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-
-    border-radius: 16px;
-    overflow: hidden;
-    */
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+    background-color: var(--black);
 }
+ 
 
 .banner .imageContainer{
     flex: 1;
@@ -35,45 +43,275 @@
 
 
 .banner .imageContainer img {
-    
     object-fit:contain;
     display: block;
 }
 
 
 .banner::before {
+    background: linear-gradient(
+        90deg, 
+        #0f0f0f 8%,
+        hsla(0, 0%, 8%, 0.97) 25%, 
+        hsla(0, 0%, 8%, 0.95) 35%,
+        hsla(0, 0%, 8%, .94) 40%, 
+        hsla(0, 0%, 8%, .92) 45%, 
+        hsla(0, 0%, 8%, .9) 50%, 
+        hsla(0, 0%, 8%, .87) 55%,
+        hsla(0, 0%, 8%, .82) 60%,
+        hsla(0, 0%, 8%, .75) 65%,
+        hsla(0, 0%, 8%, .63) 70%,
+        hsla(0, 0%, 8%, .45) 75%,
+        hsla(0, 0%, 8%, .27) 80%,
+        hsla(0, 0%, 8%, .15) 85%, 
+        hsla(0, 0%, 8%, .08) 90%, 
+        hsla(0, 0%, 8%, .03) 95%,
+        hsla(0, 0%, 8%, 0)
+      );
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 90%;
+    width: 80%;
     height: 100%;
-    background: linear-gradient(to right, var(--black) 60%, rgba(0, 0, 0, 0) 100%);
-    z-index: 0; /* Располагаем градиент под текстом */
+    z-index: 1; 
+}
+
+.top_rated .banner::before {
+    left: 20%;
 }
 
 .banner .bannerTextContainer{
+    display: flex;
+    flex-direction: column;
     color: white;
-    padding: 20px;
-    max-width: 70%; 
+    padding: 1.5em;
     position: relative;
     z-index: 1; 
     height: 100%;
-    
-    /*
-    grid-row: 1/4;
-    grid-column: 1/3;
-    z-index: 100;
-    background-image: linear-gradient(to right, var(--main-bg-color) , rgba(255, 255, 255, 0));
-    */
+}
+
+
+.top_rated .bannerTextContainer{
+    min-width: 15em;
+    max-width: 25em;
 }
 
 
 .banner .bannerOverviewContainer{
-    display: -webkit-box; /* Flex-контейнер для старого стандарта */
-  -webkit-box-orient: vertical; /* Вертикальная ориентация */
-  -webkit-line-clamp: 5; /* Показываем 3 строки */
-  line-clamp: 3; /* Для новых стандартов, не все браузеры поддерживают */
-  white-space: normal; /* Разрешаем перенос строк */
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 4;
+    line-clamp: 3; 
+    white-space: normal; 
     overflow: hidden;
 }
+
+
+.dateAndRating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dateAndRating p{
+    margin-right: 1em;
+}
+
+
+
+.upcoming{
+    width: 30%;
+}
+
+.upcoming .banner::before{
+    width: 100%;  
+    height: 35%; 
+    background: linear-gradient(
+        180deg, 
+        rgb(231, 231, 231) 10%,
+        hsla(0, 0%, 96%, .35) 70%,
+        hsla(0, 0%, 96%, .25) 80%,
+        hsla(0, 0%, 96%, .15) 85%, 
+        hsla(0, 0%, 96%, .08) 90%, 
+        hsla(0, 0%, 96%, .03) 95%,
+        hsla(0, 0%, 96%, 0)
+      );    
+}
+
+.upcoming .banner .bannerTextContainer{
+    grid-row: 1 / 3;
+    grid-column: 1 / -1;
+    color: var(--black);
+    width: 100%;
+}
+
+.upcoming .banner .bannerOverviewContainer{
+    display: none;
+}
+
+.upcoming .banner{
+    background-color: rgb(231, 231, 231);
+    display: grid; 
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+}
+
+
+.upcoming .banner .imageContainer{
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+}
+
+
+.upcoming .banner .imageContainer img{
+    width: 100%;
+}
+
+
+.top_rated .banner .imageContainer img{
+    width: 100%;
+}
+
+
+
+
+
+@media (max-width:1024px) {
+
+    .top_rated .banner::before {
+        left: 0%;
+    }
+    .top_rated .banner{
+        width: 100%;
+    }
+
+    .banner .imageContainer {
+        position: absolute;
+        width: 100%;
+        /*right: 20%;*/
+    }
+
+    .upcoming .banner .bannerTextContainer{
+        width:auto;
+    }
+   
+}
+
+@media (max-width:768px) {
+
+    .bannersContainer{
+        flex-direction: column;
+        height: 100%;
+        justify-items: center;
+        align-items: baseline;
+      }
+
+    .bannerContainer {
+        height: 50%;
+        width: 90%;
+        margin: 0.2em 0;  
+
+    }
+
+    .banner{
+        width: 100%
+    }
+
+    .top_rated .banner::before {
+        /*left: 25%;*/
+    }
+
+    .top_rated .banner{
+        width: 100%;
+    }
+
+    .banner .bannerTextContainer{
+        text-wrap: nowrap;
+    }
+   
+    .banner .bannerOverviewContainer{
+        display: none;
+    }
+
+    h1{
+        margin-bottom: 0.2em;
+        margin-top: 0.8em;
+    }
+
+    h2{
+        text-wrap:wrap;
+    }
+
+
+    .top_rated .bannerTextContainer{
+        min-width: 8em;
+        max-width: 10em;
+    }
+
+    .upcoming .bannerTextContainer{
+        min-width: 8em;
+        max-width: 10em;
+    }
+
+    .upcoming .banner::before{
+        width: 90%;
+        height: 100%;
+        top:0;
+        /*left: 10%;*/
+        background: linear-gradient(
+        90deg, 
+        rgb(231, 231, 231) 10%,
+        hsla(0, 0%, 96%, 0.85) 25%, 
+        hsla(0, 0%, 96%, .80) 35%, 
+        hsla(0, 0%, 96%, .75) 45%, 
+        hsla(0, 0%, 96%, .65) 55%,
+        hsla(0, 0%, 96%, .50) 65%,
+        hsla(0, 0%, 96%, .40) 75%,
+        hsla(0, 0%, 96%, .15) 85%, 
+        hsla(0, 0%, 96%, .08) 90%, 
+        hsla(0, 0%, 96%, .03) 95%,
+        hsla(0, 0%, 96%, 0)
+      );  
+    }
+
+    .top_rated .banner ::before{
+        background: linear-gradient(
+        180deg, 
+        rgb(6, 6, 6) 10%,
+        hsla(0, 0%, 5%, 0.85) 25%, 
+        hsla(0, 0%, 5%, 0.80) 35%, 
+        hsla(0, 0%, 5%, 0.75) 45%, 
+        hsla(0, 0%, 5%, 0.70) 55%,
+        hsla(0, 0%, 5%, 0.60) 65%,
+        hsla(0, 0%, 5%, 0.15) 85%, 
+        hsla(0, 0%, 5%, .08) 90%, 
+        hsla(0, 0%, 5%, .03) 95%,
+        hsla(0, 0%, 5%, 0)
+      );  
+    }
+
+
+    .upcoming .banner{
+        display: flex; 
+        align-items: center; 
+        position: relative; 
+        height: 100%;
+        overflow: hidden; 
+    }
+}
+
+@media (max-width:480px) {
+    .top_rated .banner::before {
+        left: 0;
+    }
+
+    .upcoming .banner::before {
+        left: 0;
+    }
+
+   
+
+    
+}
+

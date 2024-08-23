@@ -13,16 +13,18 @@ const Carousel : React.FC<CarouselProps> = ({genres})=>{
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 3,
+    slidesToShow: 7,
+    slidesToScroll: 5,
+
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 8,
-          slidesToScroll: 3,
+          slidesToShow: 5,
+          slidesToScroll: 5,
+
           infinite: true,
           dots: true,
         },
@@ -30,8 +32,10 @@ const Carousel : React.FC<CarouselProps> = ({genres})=>{
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
+
+          slidesToShow: 4,
+          slidesToScroll: 4,
+
         },
       },
       {
@@ -48,7 +52,8 @@ const Carousel : React.FC<CarouselProps> = ({genres})=>{
           slidesToScroll: 2,
         },
       },
-    ],
+    ]
+
   };
 
   return (

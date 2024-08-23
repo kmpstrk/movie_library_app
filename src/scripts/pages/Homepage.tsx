@@ -10,10 +10,8 @@ const Homepage : React.FC = ()=>{
     return(
         <div className='homepageContainer'>
 
-            <div className='headerContainer'>
-                <Header />
-            </div>
-
+            <Header />
+            
             <div className='bannersContainer'>
                 <Banner type = 'upcoming' name = 'Upcoming' />
                 <Banner type = 'top_rated' name = 'Movie of choice' />
@@ -25,7 +23,6 @@ const Homepage : React.FC = ()=>{
 
             <div className='listsContainer'>
                 <ListOfItems name = 'movie'/>
-                <ListOfItems name = 'tv'/>
             </div>
 
     </div>

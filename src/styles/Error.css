@@ -1,0 +1,13 @@
+.errorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+    font-weight: 600;
+    color:rgb(5, 41, 107);
+}
+
+.sadIcon{
+    width: 3em;
+    height: 3em;
+}

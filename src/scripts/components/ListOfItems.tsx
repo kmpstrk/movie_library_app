@@ -20,7 +20,11 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
               if(storedItems){
                 setMovies(JSON.parse(storedItems));
               } else {
-                const response = await axiosInstance.get<{ results: Movie[] }>(name+'/popular');
+                const response = await axiosInstance.get<{ results: Movie[] }>(name+'/popular',
+                  {params:{
+                    append_to_response: 'credits',
+                  }}
+                );
                 setMovies(response.data.results);
                 sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+name, JSON.stringify(response.data.results));
               }
@@ -32,11 +36,10 @@ const ListOfItems: React.FC<ListProps> = ({name})=>{
           fetchData();
     }, [name])
 
-    //if (error) return <div>{error}</div>;
-
+    
     return (
       <div className= 'hp_container'>
-        <h1> Popular {name}s</h1>
+        <h1> Popular now</h1>
         {movies.length > 0 ? (
           <div className= {name + '_hp_container'}>
             {movies.map((movie) => (

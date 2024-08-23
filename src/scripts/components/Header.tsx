@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Header: React.FC  = ()=>{
 
     return (
-    <>
+    <div className='headerContainer'>
     <Link to = '/'>
         <div className='logoContainer'>
             <FontAwesomeIcon icon='film' className='filmIcon'/>
@@ -16,7 +16,7 @@ const Header: React.FC  = ()=>{
     </Link>
         
     <SearchForm />
-    </>
+    </div>
     )
 }
 

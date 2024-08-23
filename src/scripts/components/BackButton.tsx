@@ -11,7 +11,7 @@ const BackButton : React.FC = ()=>{
 
     return (
         <button onClick={handleClick} className="backButton">
-        <FontAwesomeIcon icon="arrow-left"/>
+            <FontAwesomeIcon icon="arrow-left"/>
         </button>       
     )
 }

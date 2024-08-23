@@ -21,8 +21,10 @@ const SearchForm: React.FC = ()=>{
     return(
         <div className='formContainer'>
         <form onSubmit={handleSubmit}>
+          <label htmlFor='search'></label>
           <input type='text' 
             onChange={(e)=>{setQuery(e.target.value)}}
+            name = 'search'
             placeholder='Search'>
           </input>
           <button type='submit'>

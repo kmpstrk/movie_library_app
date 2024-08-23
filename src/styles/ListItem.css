@@ -1,44 +1,70 @@
 .listItemContainer{
+    max-height: 28em;
+    min-height: 20em;
+    min-width: 20em;
     margin:1em;
-    display: block;
-    padding: 1.5em 2em;
     text-align: center;
-    color: #333; /* Темный цвет текста */
-    text-decoration: none; /* Убираем подчеркивание */
-    background-color: #f9f9f9; /* Светлый фон */
-    border: 2px solid #e0e0e0; /* Светло-серая граница */
-    border-radius: 1em; /* Соответствует границам родителя */
-    transition: all 0.3s ease; /* Плавные переходы при наведении */
+    color: #333;
+    text-decoration: none; 
+    background-color: #f9f9f9; 
+    border: 2px solid #e0e0e0; 
+    border-radius: 1em;
+    transition: all 0.3s ease; 
     font-weight: 700;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень для объема */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     text-wrap: pretty;
+    overflow: hidden;
 }
 
 .listItemContainer:hover{
-    background-color: #fff; /* Более светлый фон при наведении */
-    border-color: #d4d4d4; /* Изменение цвета границы при наведении */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Увеличенная тень при наведении */
-    color: #000; /* Увеличение контраста текста при наведении */
+    background-color: #fff; 
+    border-color: #d4d4d4; 
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+    color: #060606;
 }
 
 .listItemContainer:active{
-    background-color: #f1f1f1; /* Легкое затемнение при нажатии */
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* Меньшая тень при нажатии */
-    transform: translateY(2px); /* Легкий сдвиг вниз при нажатии */
+    background-color: #f1f1f1;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px); 
 }
 
-.listItemContainer img{
+.listItemContainer .imageContainer{
     max-height: 20em;
 }
 
-
-
-
-
-/*
-.listBannerContainer img{
-    grid-row: 1/4;
-    grid-column: 2/4;
-    
+.listItemContainer img{
+    object-fit:fill;
+    width: 100%;
 }
-    */
+
+.listItemTextContainer{
+    max-height: 5.8em;
+    margin: 0 1em;  
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2;
+    line-clamp: 2; 
+    white-space: normal; 
+    overflow: hidden; 
+}
+
+.listItemTextContainer h2{
+    margin: auto;
+}
+
+
+@media (min-width: 1024px){
+
+
+    
+.searchResultContainer .listItemContainer img{
+    filter: saturate(5%);
+    transition: filter 0.3s ease;
+}
+
+.searchResultContainer .listItemContainer:hover img{
+    filter:saturate(100%);
+}
+
+}

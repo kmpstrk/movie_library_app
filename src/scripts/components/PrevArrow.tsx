@@ -6,7 +6,7 @@ import { ArrowProps } from '../../interfaces/ArrowProps';
 
 const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
     return (
-      <div className="custom-arrow custom-arrow-prev" onClick={onClick}>
+      <div className="customArrow customArrowPrev" onClick={onClick}>
         <FontAwesomeIcon icon = 'chevron-left' />
       </div>
     );

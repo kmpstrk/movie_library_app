@@ -6,8 +6,8 @@ import '../../styles/Rating.css'
 const Rating : React.FC<RatingProps> = ({rating})=>{
     return (
         <div className="ratingContainer">
-            <FontAwesomeIcon icon="star"/>
-            {rating}
+            <FontAwesomeIcon icon="star" className="ratingIcon" />
+            <p className='small-text'>{rating}</p>
         </div>
     )
 }

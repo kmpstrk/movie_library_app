@@ -4,16 +4,18 @@ import {Movie} from '../../interfaces/Movie'
 import '../../styles/Banner.css'
 import { BannerProps } from "../../interfaces/bannerProps"
 import Rating from "./Rating"
+import ReleaseDate from './ReleaseDate'
+import Loading from "./Loading"
 import Error from "./Error"
 import { Link } from "react-router-dom"
+
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached_';
 
 const Banner : React.FC<BannerProps> = ({type, name})=>{
     const [movies, setMovies] = useState<Movie[]>([]);
     const [movie, setMovie] = useState<Movie | null>(null);
-    //const [loading, setLoading] = useState<boolean>(false);
-    //const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -27,10 +29,10 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                     setMovies(response.data.results);
                     sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+type, JSON.stringify(response.data.results))
                 }
+                setLoading(false);
             } catch (err) {
-                console.error(err);
-              //setError('Failed to fetch data');
-              //setLoading(false);
+              console.error(err);
+
             }
           };
       
@@ -55,8 +57,12 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
 
     return (
-        <div className="bannerContainer">
-           {movie ? (
+        <div className = {`bannerContainer ${type}`}>
+             {loading ? (
+                <Loading />
+            ) : (
+
+           movie ? (
                 <>
                 <h1>{name}</h1>
                 
@@ -65,22 +71,29 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
                     <div className='bannerTextContainer'>
                         <h2>{movie.title}</h2>
-                        <p><strong>Year:</strong> {movie.release_date}</p>
-                        <Rating rating = {movie.vote_average} />
+
+                        <div className="dateAndRating">
+                            <ReleaseDate date = {movie.release_date} />
+                            <Rating rating = {movie.vote_average} />
+                        </div>
+                        
                         <div className="bannerOverviewContainer">
                             <p>{movie.overview}</p>
                         </div>
                     </div>
+
                     <div className='imageContainer'>
-                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
+                        <img src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`} alt= {'Poster of ' + movie.title} />
                     </div>
                 
                 </div>
                 </ Link>
                 </>
             ) : ( 
+
                 <Error text='No data'/>
             )}
+
                 
         </div>
     )

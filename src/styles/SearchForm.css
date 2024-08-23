@@ -1,41 +1,67 @@
-.formContainer{
-    grid-column: 2/2;
-    justify-self: end;
+.formContainer {
+    display: flex;
+    justify-content: flex-end; 
     margin: auto 2em;
-    width: 50%;
+    width: 35%;
 }
 
-.formContainer form{
-    grid-template-columns: 10fr 1fr;
-    display: grid;
-    height: 2em;   
-    background-color: rgb(255, 255, 255);
+
+
+.formContainer form {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    background-color: rgb(244, 244, 244);
     border-radius: 100em;
     padding: 0.3em;
+    width: 100%;
+    border:2px solid rgb(244, 244, 244);
+    transition: all 0.3s ease;
 }
 
-input{
+.formContainer form:hover {
+    border-color: #d4d4d4;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input {
     background-color: rgba(255, 255, 255, 0);
     border: 0;
     border-radius: 100em;
     font-size: 1em;
     padding: 0 1em;
-    width: 100%;
-
+    flex-grow: 1; 
+    width: 0;
 }
 
-
-.formContainer button{
+.formContainer button {
     background-color: rgb(255, 255, 255);
-    grid-column: 2/2;
     border-radius: 100em;
     border: 0;
     transition: color 0.3s ease;
+    margin-left: 0.5em; 
+    height: 2.5em;
+    width: 2.5em;
+    cursor: pointer;
 }
 
-.magnifyingGlassIcon{
+.formContainer button:hover{
+    background-color: rgb(244, 244, 244);
+}
+
+.magnifyingGlassIcon {
     width: 1.2em;
     height: 1.2em;
-    color: blue;
+    color: var(--black);
     transition: color 0.3s ease;
+}
+
+
+@media (max-width: 768px){
+    .formContainer{
+        width: 50%;
+        margin: auto 0.5em;
+        font-size: 0.9em;
+    }
 }

@@ -1,9 +1,9 @@
-.movie_hp_container{  
+.movie_hp_container{
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
   width: 100vw;
-  padding: 10px;
+  padding: 1em;
   box-sizing: border-box;
 }
 

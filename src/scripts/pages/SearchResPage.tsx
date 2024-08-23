@@ -8,12 +8,15 @@ import '../../styles/variables.css';
 import BackButton from "../components/BackButton";
 import '../../styles/SearchResultPage.css';
 import Error from "../components/Error";
+import MainTitle from "../components/MainTitle";
+import Loading from "../components/Loading";
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached_search_result';
 
 
 const SearchResPage : React.FC = ()=>{
     const [searchResult, setSearchResult] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean> (true);
     
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -26,11 +29,13 @@ const SearchResPage : React.FC = ()=>{
                         {
                             params: {
                                 query : searchQuery,
+                                sort_by: 'popularity.desc',
                             }
                         }
                     )
-                    setSearchResult(response.data.results)
-                    sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY, JSON.stringify(response.data.results))
+                    setSearchResult(response.data.results);
+                    sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY, JSON.stringify(response.data.results));
+                    setLoading(false);
                 } catch (err) {
                     console.error(err);
                 }
@@ -41,14 +46,32 @@ const SearchResPage : React.FC = ()=>{
 
 
     return (
-        <div>
+        <div className="searchResPageContainer">
+
             <Header />
-            <BackButton />
-            {searchResult.length > 0 ? (
-                <SearchResultItems result={searchResult} from = 'search_result'/>
+
+            {loading ? (
+                <Loading />
             ) : (
-                <Error text = 'Sorry, something is wrong. Try to check your Internet connection.'/>
+
+            <div className="searchResPageContent">
+
+                <div className='pageTitle'>
+                    <BackButton />
+                    <h1> <MainTitle title = {searchQuery} /> </h1> 
+                </div>
+
+                <div className="searchResultContainer">
+                    {searchResult.length > 0 ? (
+                        <SearchResultItems result={searchResult} from = 'search_result'/>
+                    ) : (
+                        <Error text = 'Nothing is found'/>
+                    )}
+                </div>
+
+            </div>
             )}
+            
         </div>
     )
 

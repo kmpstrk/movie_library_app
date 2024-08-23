@@ -1,0 +1,41 @@
+.loadingSpinner{
+    width: 5em;
+    height: 5em;
+    margin: 15% auto;
+    position: relative;
+    grid-row: 2/3;    
+}
+
+
+.doubleBounce1, .doubleBounce2{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #8a8a8a;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 2.0s infinite ease-in-out;
+}
+
+.doubleBounce2{
+    animation-delay: -1.0s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+      transform: scale(0.0);
+    }
+    50% {
+      transform: scale(1.0);
+    }
+  }
+
+
+
+  @media (max-width: 768px){
+    .loadingSpinner{
+      margin: 50% auto;
+    }
+  }

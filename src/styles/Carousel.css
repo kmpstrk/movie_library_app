@@ -1,24 +1,47 @@
-.custom-arrow {
+.customArrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(38, 38, 38, 0.232);
+    color: rgb(255, 255, 255);
     border: none;
-    padding: 10px;
+    border-radius: 50%;
+    padding: 0.5em;
     cursor: pointer;
     z-index: 1;
+    width: 2em;
+    height: 2em;
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
   }
   
-  .custom-arrow-prev {
-    left: 10px;
+  .customArrowPrev {
+    left: 0.5em;
   }
   
-  .custom-arrow-next {
-    right: 10px;
+  .customArrowNext {
+    right: 0.5em;
   }
   
-  .custom-arrow svg {
-    width: 20px;
-    height: 20px;
+  .customArrow svg {
+    margin: auto;
+    width: 1.2em;
+    height: 1.2em
+  }
+
+  @media (max-width: 768px) {
+    .customArrow{
+      width: 1.2em;
+      height: 1.2em;
+    }
+
+    .customArrowNext{
+      right: 0.2em;
+    }
+
+    .customArrowPrev{
+      left: 0.2em;
+    }
   }
