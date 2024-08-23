@@ -189,7 +189,7 @@ h2{
     .banner .imageContainer {
         position: absolute;
         width: 100%;
-        right: 20%;
+        /*right: 20%;*/
     }
 
     .upcoming .banner .bannerTextContainer{
@@ -219,7 +219,7 @@ h2{
     }
 
     .top_rated .banner::before {
-        left: 25%;
+        /*left: 25%;*/
     }
 
     .top_rated .banner{
@@ -258,7 +258,7 @@ h2{
         width: 90%;
         height: 100%;
         top:0;
-        left: 10%;
+        /*left: 10%;*/
         background: linear-gradient(
         90deg, 
         rgb(231, 231, 231) 10%,
@@ -302,8 +302,12 @@ h2{
 }
 
 @media (max-width:480px) {
-    .banner::before {
-        left: 20%;
+    .top_rated .banner::before {
+        left: 0;
+    }
+
+    .upcoming .banner::before {
+        left: 0;
     }
 
    

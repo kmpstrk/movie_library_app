@@ -1,7 +1,7 @@
 .loadingSpinner{
     width: 5em;
     height: 5em;
-    margin: 20% auto;
+    margin: 15% auto;
     position: relative;
     grid-row: 2/3;    
 }

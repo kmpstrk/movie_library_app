@@ -9,12 +9,14 @@ import BackButton from "../components/BackButton";
 import '../../styles/SearchResultPage.css';
 import Error from "../components/Error";
 import MainTitle from "../components/MainTitle";
+import Loading from "../components/Loading";
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached_search_result';
 
 
 const SearchResPage : React.FC = ()=>{
     const [searchResult, setSearchResult] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean> (true);
     
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -31,8 +33,9 @@ const SearchResPage : React.FC = ()=>{
                             }
                         }
                     )
-                    setSearchResult(response.data.results)
-                    sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY, JSON.stringify(response.data.results))
+                    setSearchResult(response.data.results);
+                    sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY, JSON.stringify(response.data.results));
+                    setLoading(false);
                 } catch (err) {
                     console.error(err);
                 }
@@ -46,6 +49,10 @@ const SearchResPage : React.FC = ()=>{
         <div className="searchResPageContainer">
 
             <Header />
+
+            {loading ? (
+                <Loading />
+            ) : (
 
             <div className="searchResPageContent">
 
@@ -63,6 +70,7 @@ const SearchResPage : React.FC = ()=>{
                 </div>
 
             </div>
+            )}
             
         </div>
     )

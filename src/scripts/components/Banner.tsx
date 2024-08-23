@@ -5,14 +5,14 @@ import '../../styles/Banner.css'
 import { BannerProps } from "../../interfaces/bannerProps"
 import Rating from "./Rating"
 import ReleaseDate from './ReleaseDate'
+import Loading from "./Loading"
 
 const SESSION_STORAGE_MOVIES_KEY = 'cached';
 
 const Banner : React.FC<BannerProps> = ({type, name})=>{
     const [movies, setMovies] = useState<Movie[]>([]);
     const [movie, setMovie] = useState<Movie | null>(null);
-    //const [loading, setLoading] = useState<boolean>(false);
-    //const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -26,9 +26,9 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                     setMovies(response.data.results);
                     sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY+type, JSON.stringify(response.data.results))
                 }
+                setLoading(false);
             } catch (err) {
-              //setError('Failed to fetch data');
-              //setLoading(false);
+              console.error(err);
             }
           };
       
@@ -54,7 +54,11 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
 
     return (
         <div className = {`bannerContainer ${type}`}>
-           {movie ? (
+             {loading ? (
+                <Loading />
+            ) : (
+
+           movie ? (
                 <>
                 <h1>{name}</h1>
                 <div className = 'banner'>
@@ -80,7 +84,9 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
                 </>
             ) : ( 
                 <p>No movie data available</p>
-            )}
+            )
+        )
+        }
                 
         </div>
     )

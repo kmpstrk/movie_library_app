@@ -48,8 +48,6 @@ const CategoryPage: React.FC = ()=>{
             {loading ? (
                 <Loading />
             ) : (
-                
-
                 <div className='categoryPageContent'>
             
                 <div className='pageTitle'>

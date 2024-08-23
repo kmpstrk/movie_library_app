@@ -4,13 +4,15 @@ import { Genre } from "../../interfaces/Genre";
 import axiosInstance from "../AxiosConfig";
 import Error from "./Error";
 import Carousel from "./Carousel";
+import Loading from "./Loading";
 
 const SESSION_STORAGE_GENRES_KEY = 'cached_genres';
 
 
 const Categories : React.FC = ()=>{
 
-    const [genres, setGenres] = useState<Genre[]>([])
+    const [genres, setGenres] = useState<Genre[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -23,6 +25,7 @@ const Categories : React.FC = ()=>{
                     setGenres(response.data.genres);
                     sessionStorage.setItem(SESSION_STORAGE_GENRES_KEY, JSON.stringify(response.data.genres))
                 }
+                setLoading(false);
             } catch (error) {
                 console.error(error);
             }
@@ -33,10 +36,15 @@ const Categories : React.FC = ()=>{
     
     return(
         <>
-        {genres.length > 0 ? (
-           <Carousel genres={genres}/>
-        ) : (
-            <Error text='No categories' />
+        {loading ? (
+                <Loading />
+            ) : (
+
+            genres.length > 0 ? (
+            <Carousel genres={genres}/>
+            ) : (
+                <Error text='No categories' />
+            )
         )}
         </>
     )
