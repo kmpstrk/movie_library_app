@@ -1,5 +1,16 @@
-## Setup Instructions
+# The Movie Library App
+The Movie Library App is a movie library that allows users to search for movies using the TMDB API and view movie details in a simple, interactive interface. The app leverages HTML, CSS, TypeScript and React to provide a responsive user experience.
 
+## How I worked on this project
+* API Integration: Integrated with the TMDB API to fetch movie data.
+* Responsive UI: User-friendly interface to interact with the movie library, enabling users to search movies on phones, tablets and desktops.
+* Code Structuring: Organized the project into modules and packages.
+
+## If I had more time I would change this
+* Add Tests to cover the functionalities. That would increase the reliability of the application.
+* Improve Error Handling. The current error handling could be made more robust.
+
+## How to setup the project
 To run this project, you need to provide your own API key for TMDB (The Movie Database). 
 
 ### Step 1: Obtain an API Key
@@ -22,11 +33,11 @@ Once you have your API key, you need to replace the placeholder key in the `Axio
         }
 
 
-## Run the app
+### Step 2: Run the app
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
