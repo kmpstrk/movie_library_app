@@ -1,6 +1,6 @@
 {
   "name": "movie_library_app",
-  "homepage": "https://kmpstrk.github.io/movie_library_app/",
+  "homepage": "https://kmpstrk.github.io/movie_library_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
