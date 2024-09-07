@@ -35,9 +35,11 @@ Once you have your API key, you need to replace the placeholder key in the `Axio
 
 ### Step 2: Run the app
 
+Link: https://kmpstrk.github.io/movie_library_app/
+
 In the project directory, you can run:
 
 #### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
