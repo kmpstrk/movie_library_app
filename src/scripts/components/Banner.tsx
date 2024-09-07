@@ -92,7 +92,7 @@ const Banner : React.FC<BannerProps> = ({type, name})=>{
             ) : ( 
 
                 <Error text='No data'/>
-            )}
+            ))}
 
                 
         </div>

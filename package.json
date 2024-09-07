@@ -1,5 +1,6 @@
 {
-  "name": "my-app",
+  "name": "movie_library_app",
+  "homepage": "https://kmpstrk.github.io/movie_library_app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +50,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
-    "@types/react-slick": "^0.23.13"
+    "@types/react-slick": "^0.23.13",
+    "gh-pages": "^6.1.1"
   }
 }
