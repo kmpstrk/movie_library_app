@@ -14,7 +14,7 @@ const SearchForm: React.FC = ()=>{
     query.trim() !== '' ? (
       navigate(`/search?query=${encodeURIComponent(query)}`)
     ) : (
-      console.log('empty query')
+      console.log('Empty query')
     )
   }
 

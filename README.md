@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# The Movie Library App
+The Movie Library App is a movie library that allows users to search for movies using the TMDB API and view movie details in a simple, interactive interface. The app leverages HTML, CSS, TypeScript and React to provide a responsive user experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How I worked on this project
+* API Integration: Integrated with the TMDB API to fetch movie data.
+* Responsive UI: User-friendly interface to interact with the movie library, enabling users to search movies on phones, tablets and desktops.
+* Code Structuring: Organized the project into modules and packages.
 
-## Available Scripts
+## If I had more time I would change this
+* Add Tests to cover the functionalities. That would increase the reliability of the application.
+* Improve Error Handling. The current error handling could be made more robust.
+
+## How to setup the project
+To run this project, you need to provide your own API key for TMDB (The Movie Database). 
+
+### Step 1: Obtain an API Key
+
+1. Go to [The Movie Database (TMDB) website](https://www.themoviedb.org/).
+2. Sign in or create a new account if you don't have one.
+3. Navigate to your account settings and find the "API" section.
+4. Generate a new API key.
+
+### Step 2: Update the API Key in the Code
+
+Once you have your API key, you need to replace the placeholder key in the `AxiosConfig.tsx` file.
+
+1. Open the `src/scripts/AxiosConfig.tsx` file in your code editor.
+2. Locate the line that looks like this:
+
+   ```typescript
+   params: {
+          api_key: 'YOUR_API_KEY_HERE'
+        }
+
+
+### Step 2: Run the app
 
 In the project directory, you can run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

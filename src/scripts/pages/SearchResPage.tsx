@@ -37,7 +37,7 @@ const SearchResPage : React.FC = ()=>{
                     sessionStorage.setItem(SESSION_STORAGE_MOVIES_KEY, JSON.stringify(response.data.results));
                     setLoading(false);
                 } catch (err) {
-                    console.error(err);
+                    console.log(err);
                 }
             }
             fetchData();
